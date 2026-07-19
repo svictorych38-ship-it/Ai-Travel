@@ -1,0 +1,71 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+}
+
+body{
+    background:#0f172a;
+    color:#ffffff;
+}
+
+.header{
+    background:#111827;
+    padding:30px 20px;
+    text-align:center;
+    border-bottom:1px solid #334155;
+}
+
+.header h1{
+    font-size:34px;
+    margin-bottom:10px;
+}
+
+.header p{
+    color:#94a3b8;
+}
+
+.container{
+    max-width:700px;
+    margin:auto;
+    padding:20px;
+}
+
+.trip-card{
+    background:#1e293b;
+    border-radius:18px;
+    padding:25px;
+    margin-top:20px;
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
+}
+
+.trip-card h2{
+    margin-bottom:8px;
+}
+
+.trip-card p{
+    color:#94a3b8;
+    margin-bottom:25px;
+}
+
+button{
+    width:100%;
+    padding:18px;
+    margin-bottom:15px;
+    border:none;
+    border-radius:14px;
+    background:#2563eb;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+button:active{
+    transform:scale(.98);
+}
