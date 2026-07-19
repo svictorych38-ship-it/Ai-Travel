@@ -4,7 +4,7 @@
 // ======================================
 
 function openDay1() {
-    window.location.href = "pages/day1.html";
+    window.location.href = "day1.html";
 }
 
 function comingSoon() {
