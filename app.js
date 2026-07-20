@@ -6,7 +6,9 @@
 function openDay1() {
     window.location.href = "day1.html";
 }
-
+function openDay2() {
+    location.href = "day2.html";
+}
 function comingSoon() {
     alert("🚧 Этот раздел появится в следующей версии.");
 }
