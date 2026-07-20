@@ -1,240 +1,463 @@
+/* =======================================
+   AI Travel v1.0
+   Автор: Сергей + ChatGPT
+======================================= */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
 }
 
 body{
-    background:#0f172a;
-    color:#ffffff;
+
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+
+    background:#0B1120;
+
+    color:white;
+
+    min-height:100vh;
+
 }
 
-.header{
-    background:#111827;
-    padding:30px 20px;
-    text-align:center;
-    border-bottom:1px solid #334155;
+/* ---------- HERO ---------- */
+
+.hero{
+
+    position:relative;
+
+    height:320px;
+
+    background:url("https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=1600&auto=format&fit=crop");
+
+    background-size:cover;
+
+    background-position:center;
+
+    overflow:hidden;
+
 }
 
-.header h1{
-    font-size:34px;
-    margin-bottom:10px;
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+        to bottom,
+        rgba(0,0,0,.20),
+        rgba(0,0,0,.45),
+        rgba(11,17,32,.95)
+    );
+
 }
 
-.header p{
-    color:#94a3b8;
+.hero-overlay{
+
+    position:relative;
+
+    z-index:2;
+
+    height:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:flex-end;
+
+    padding:30px;
+
 }
+
+.hero h1{
+
+    font-size:42px;
+
+    font-weight:800;
+
+    margin-bottom:8px;
+
+    text-shadow:0 8px 20px rgba(0,0,0,.45);
+
+}
+
+.hero p{
+
+    color:#E2E8F0;
+
+    font-size:18px;
+
+    margin-bottom:22px;
+
+}
+
+/* ---------- ПРОГРЕСС ---------- */
+
+.trip-progress{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    font-size:15px;
+
+    margin-bottom:12px;
+
+}
+
+.progress-bar{
+
+    width:100%;
+
+    height:10px;
+
+    background:rgba(255,255,255,.18);
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+}
+
+.progress-fill{
+
+    width:7%;
+
+    height:100%;
+
+    border-radius:50px;
+
+    background:linear-gradient(90deg,#38BDF8,#22C55E);
+
+}
+
+/* ---------- ОСНОВНОЙ КОНТЕЙНЕР ---------- */
 
 .container{
-    max-width:700px;
-    margin:auto;
-    padding:20px;
+
+    max-width:520px;
+
+    margin:-70px auto 120px;
+
+    padding:0 20px;
+
+    position:relative;
+
+    z-index:10;
+
 }
+/* =======================================
+   КАРТОЧКА ПУТЕШЕСТВИЯ
+======================================= */
 
 .trip-card{
-    background:#1e293b;
-    border-radius:18px;
-    padding:25px;
-    margin-top:20px;
-    box-shadow:0 15px 35px rgba(0,0,0,.35);
+
+    background:rgba(30,41,59,.92);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:28px;
+
+    padding:28px;
+
+    box-shadow:0 25px 50px rgba(0,0,0,.45);
+
 }
 
 .trip-card h2{
-    margin-bottom:8px;
+
+    font-size:34px;
+
+    margin-bottom:10px;
+
+    font-weight:700;
+
 }
 
 .trip-card p{
-    color:#94a3b8;
-    margin-bottom:25px;
+
+    color:#CBD5E1;
+
+    margin-bottom:28px;
+
+    font-size:17px;
+
 }
 
-button{
+/* =======================================
+   КНОПКИ
+======================================= */
+
+.trip-card button{
+
     width:100%;
-    padding:18px;
-    margin-bottom:15px;
+
+    height:64px;
+
+    margin-bottom:18px;
+
     border:none;
-    border-radius:14px;
-    background:#2563eb;
-    color:white;
-    font-size:18px;
+
+    border-radius:18px;
+
     cursor:pointer;
+
+    font-size:20px;
+
+    font-weight:600;
+
+    color:white;
+
+    background:linear-gradient(135deg,#2563EB,#0EA5E9);
+
     transition:.25s;
+
+    box-shadow:0 10px 25px rgba(37,99,235,.35);
+
 }
 
-button:hover{
-    background:#1d4ed8;
+.trip-card button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 18px 35px rgba(37,99,235,.55);
+
 }
 
-button:active{
+.trip-card button:active{
+
     transform:scale(.98);
-}
-.progress-box{
-
-margin-top:20px;
 
 }
 
-.progress{
+/* =======================================
+   ПОСЛЕДНЯЯ КНОПКА
+======================================= */
 
-height:12px;
+.trip-card button:last-child{
 
-background:#334155;
-
-border-radius:15px;
-
-overflow:hidden;
-
-margin-top:8px;
+    margin-bottom:0;
 
 }
+/* =======================================
+   НИЖНЯЯ НАВИГАЦИЯ
+======================================= */
 
-#bar{
-
-width:0%;
-
-height:100%;
-
-background:#22c55e;
-
-transition:.4s;
-
-}
-
-.progress-text{
-
-color:white;
-
-font-size:18px;
-
-}
 .bottom-nav{
-position:fixed;
-bottom:0;
-left:0;
-width:100%;
-height:72px;
-background:#111827;
-display:flex;
-justify-content:space-around;
-align-items:center;
-border-top:1px solid #334155;
-box-shadow:0 -4px 15px rgba(0,0,0,.35);
+
+    position:fixed;
+
+    left:50%;
+
+    bottom:20px;
+
+    transform:translateX(-50%);
+
+    width:min(520px,92%);
+
+    display:flex;
+
+    justify-content:space-around;
+
+    align-items:center;
+
+    padding:12px;
+
+    background:rgba(15,23,42,.92);
+
+    backdrop-filter:blur(24px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:24px;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.45);
+
+    z-index:1000;
+
 }
 
 .nav-item{
-display:flex;
-flex-direction:column;
-align-items:center;
-text-decoration:none;
-color:#94a3b8;
-font-size:12px;
+
+    background:none;
+
+    border:none;
+
+    color:#94A3B8;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:6px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.nav-item:hover{
+
+    color:white;
+
+    transform:translateY(-3px);
+
 }
 
 .nav-item.active{
-color:#3b82f6;
-font-weight:bold;
+
+    color:#38BDF8;
+
 }
 
 .nav-item span{
-margin-top:4px;
+
+    font-size:12px;
+
 }
 
-body{
-padding-bottom:90px;
-}
-.info-card{
-    background:#1e293b;
-    border-radius:18px;
-    padding:20px;
-    margin:18px 0;
-    box-shadow:0 10px 25px rgba(0,0,0,.25);
+/* =======================================
+   АНИМАЦИИ
+======================================= */
+
+.hero{
+
+    animation:fadeDown .6s ease;
+
 }
 
-.info-card h2{
-    margin-bottom:8px;
-    font-size:22px;
+.trip-card{
+
+    animation:fadeUp .7s ease;
+
 }
 
-.info-card p{
-    color:#94a3b8;
-    margin-bottom:16px;
+.bottom-nav{
+
+    animation:fadeUp .9s ease;
+
 }
 
-.action-btn{
-    display:block;
-    width:100%;
-    padding:14px;
-    margin:10px 0;
-    background:#2563eb;
-    color:#fff;
-    text-align:center;
-    text-decoration:none;
-    border-radius:12px;
-    font-weight:600;
+@keyframes fadeDown{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
 }
 
-.action-btn:hover{
-    background:#1d4ed8;
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
 }
 
-.check-row{
-    margin-top:15px;
-    font-size:17px;
-}
-/* ===== Карточки v0.3 ===== */
+/* =======================================
+   СКРОЛЛ
+======================================= */
 
-.info-card{
-    background:#1e293b;
-    border-radius:18px;
-    padding:20px;
-    margin:20px 0;
-    box-shadow:0 10px 30px rgba(0,0,0,.25);
+::-webkit-scrollbar{
+
+    width:8px;
+
 }
 
-.info-card h2{
-    margin-bottom:8px;
-    font-size:24px;
+::-webkit-scrollbar-thumb{
+
+    background:#334155;
+
+    border-radius:50px;
+
 }
 
-.info-card p{
-    color:#94a3b8;
-    margin-bottom:18px;
-    line-height:1.5;
+/* =======================================
+   АДАПТАЦИЯ
+======================================= */
+
+@media (max-width:600px){
+
+.hero{
+
+    height:260px;
+
 }
 
-.action-btn{
-    display:block;
-    width:100%;
-    padding:16px;
-    margin:12px 0;
-    border-radius:14px;
-    text-align:center;
-    text-decoration:none;
-    background:#2563eb;
-    color:#fff;
-    font-size:17px;
-    font-weight:600;
-    transition:.25s;
+.hero h1{
+
+    font-size:34px;
+
 }
 
-.action-btn:hover{
-    background:#1d4ed8;
+.hero p{
+
+    font-size:16px;
+
 }
 
-.action-btn:active{
-    transform:scale(.98);
+.trip-card{
+
+    padding:22px;
+
+    border-radius:22px;
+
 }
 
-.check-row{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin-top:18px;
+.trip-card h2{
+
+    font-size:28px;
+
+}
+
+.trip-card button{
+
+    height:58px;
+
     font-size:18px;
+
 }
 
-.check-row input{
-    width:22px;
-    height:22px;
+.bottom-nav{
+
+    bottom:10px;
+
+    width:96%;
+
+}
+
 }
