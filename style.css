@@ -182,3 +182,59 @@ padding-bottom:90px;
     margin-top:15px;
     font-size:17px;
 }
+/* ===== Карточки v0.3 ===== */
+
+.info-card{
+    background:#1e293b;
+    border-radius:18px;
+    padding:20px;
+    margin:20px 0;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+.info-card h2{
+    margin-bottom:8px;
+    font-size:24px;
+}
+
+.info-card p{
+    color:#94a3b8;
+    margin-bottom:18px;
+    line-height:1.5;
+}
+
+.action-btn{
+    display:block;
+    width:100%;
+    padding:16px;
+    margin:12px 0;
+    border-radius:14px;
+    text-align:center;
+    text-decoration:none;
+    background:#2563eb;
+    color:#fff;
+    font-size:17px;
+    font-weight:600;
+    transition:.25s;
+}
+
+.action-btn:hover{
+    background:#1d4ed8;
+}
+
+.action-btn:active{
+    transform:scale(.98);
+}
+
+.check-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top:18px;
+    font-size:18px;
+}
+
+.check-row input{
+    width:22px;
+    height:22px;
+}
