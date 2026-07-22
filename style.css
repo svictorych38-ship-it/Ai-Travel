@@ -27,7 +27,7 @@ body{
 
     position:relative;
 
-    height:340px;
+    height:380px;
 
     background:url("https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=1600&auto=format&fit=crop");
 
@@ -36,8 +36,8 @@ body{
     background-position:center;
 
     overflow:hidden;
-
 }
+
 
 .hero::before{
 
@@ -142,7 +142,7 @@ body{
 
     max-width:520px;
 
-    margin:-70px auto 120px;
+    margin:-30px auto 120px;
 
     padding:0 20px;
 
@@ -429,7 +429,7 @@ body{
 
 .hero{
 
-    height:360px;
+    height:340px;
 
 }
 
@@ -438,7 +438,11 @@ body{
     font-size:34px;
 
 }
+.container{
 
+    margin:-30px auto 120px;
+
+}
 .hero p{
 
     font-size:16px;
