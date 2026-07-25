@@ -1,0 +1,148 @@
+
+/* documents.css - AI Travel */
+:root{
+  --primary:#2563eb;
+  --bg:#f4f7fb;
+  --card:#ffffff;
+  --text:#1f2937;
+  --muted:#6b7280;
+  --radius:18px;
+  --shadow:0 10px 30px rgba(0,0,0,.08);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+.page-header{
+  position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;gap:16px;
+  padding:16px 20px;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid #e5e7eb;
+}
+.back-button,.primary-button,.secondary-button,.call-button,.close-button{
+  border:none;border-radius:12px;
+  cursor:pointer;font-weight:600;
+}
+.back-button{
+  width:42px;height:42px;font-size:22px;
+  background:var(--primary);color:#fff;
+}
+.documents-nav{
+  display:flex;gap:10px;
+  overflow-x:auto;
+  padding:12px 16px;
+  background:#fff;
+  position:sticky;top:74px;z-index:90;
+}
+.documents-nav a{
+  text-decoration:none;
+  color:var(--primary);
+  white-space:nowrap;
+  padding:8px 14px;
+  border-radius:999px;
+  background:#eef4ff;
+}
+.documents-container{
+  max-width:1100px;
+  margin:24px auto;
+  padding:0 16px 40px;
+}
+.hero-card,.document-card,.tip-card,.warning-card,.section-card{
+  background:var(--card);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:20px;
+  margin-bottom:20px;
+}
+.documents-section h2{margin-bottom:6px}
+.section-description{color:var(--muted)}
+.document-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:18px;
+}
+.document-card h3,.document-card h4{margin:8px 0}
+.document-icon{
+  font-size:34px;
+}
+.document-details{
+  display:grid;
+  gap:8px;
+  margin:16px 0;
+}
+.detail-row{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+}
+.primary-button,.secondary-button,.call-button{
+  display:inline-block;
+  padding:12px 18px;
+  text-decoration:none;
+  margin-top:10px;
+}
+.primary-button{
+  background:var(--primary);
+  color:#fff;
+}
+.secondary-button{
+  background:#eef4ff;
+  color:var(--primary);
+}
+.call-button{
+  background:#16a34a;
+  color:#fff;
+}
+.button-group{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.viewer{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.88);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+}
+.hidden{display:none}
+.viewer-toolbar{
+  position:absolute;
+  top:16px;
+  right:16px;
+}
+.close-button{
+  width:48px;height:48px;
+  background:#fff;
+}
+.pdf-viewer{
+  width:min(95vw,1100px);
+  height:90vh;
+  border:none;
+  border-radius:12px;
+  background:#fff;
+}
+.image-viewer{
+  max-width:95vw;
+  max-height:90vh;
+  border-radius:12px;
+}
+.tip-card{
+  border-left:5px solid #16a34a;
+}
+.warning-card{
+  border-left:5px solid #f59e0b;
+}
+@media (max-width:768px){
+  .page-header{padding:12px}
+  .documents-container{padding:0 12px 24px}
+  .button-group{flex-direction:column}
+  .primary-button,.secondary-button,.call-button{width:100%;text-align:center}
+}
