@@ -735,3 +735,189 @@ body{
     transform:translateX(6px);
 
 }
+/* =======================================================
+   Просмотрщик документов
+======================================================= */
+
+.viewer{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.92);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:99999;
+
+}
+
+.hidden{
+
+    display:none;
+
+}
+
+.viewer-toolbar{
+
+    position:absolute;
+
+    top:20px;
+
+    right:20px;
+
+    z-index:100000;
+
+}
+
+.close-button{
+
+    width:48px;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#ef4444;
+
+    color:#fff;
+
+    font-size:24px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.close-button:hover{
+
+    transform:scale(1.08);
+
+}
+
+.image-viewer{
+
+    max-width:95vw;
+
+    max-height:90vh;
+
+    object-fit:contain;
+
+    border-radius:12px;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.6);
+
+}
+
+.pdf-viewer{
+
+    width:95vw;
+
+    height:90vh;
+
+    border:none;
+
+    background:#fff;
+
+}
+/* =======================================================
+   Просмотрщик документов
+======================================================= */
+
+.viewer{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.92);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    z-index:9999;
+
+}
+
+.hidden{
+
+    display:none;
+
+}
+
+.viewer-toolbar{
+
+    position:absolute;
+
+    top:20px;
+
+    right:20px;
+
+}
+
+.close-button{
+
+    width:48px;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    background:#2563EB;
+
+    color:#fff;
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+.close-button:hover{
+
+    background:#1D4ED8;
+
+}
+
+.pdf-viewer{
+
+    width:90%;
+
+    height:90%;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:white;
+
+}
+
+.image-viewer{
+
+    max-width:95%;
+
+    max-height:90%;
+
+    border-radius:16px;
+
+    object-fit:contain;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.45);
+
+}
