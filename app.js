@@ -135,9 +135,10 @@ function openRoute() {
     window.location.href = "route.html";
 }
 
-function openFavorites() {
-    window.location.href = "favorites.html";
+function openDocuments() {
+    window.location.href = "documents.html";
 }
+
 
 function openSettings() {
     window.location.href = "settings.html";

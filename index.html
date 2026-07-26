@@ -47,6 +47,35 @@
 <p class="trip-subtitle">
 12 дней отдыха у моря
 </p>
+<button class="documents-button" onclick="openDocuments()">
+
+    <div class="doc-left">
+
+        <div class="doc-icon">
+            📄
+        </div>
+
+        <div class="doc-text">
+
+            <strong>Документы путешествия</strong>
+
+            <small>
+                Билеты • QR • Отель • Трансфер • Страховка • Паспорта
+            </small>
+
+        </div>
+
+    </div>
+
+    <div class="doc-arrow">
+        ➜
+    </div>
+
+</button>
+
+<h3 class="section-title">
+🗓️ Программа путешествия
+</h3>
      <button onclick="openDay1()">🏨 День 1 — Прилет</button>
 <button onclick="openDay2()">🏖️ День 2 — Первый день отдыха</button>
 <button onclick="openDay3()">🌅 День 3</button>
@@ -59,7 +88,9 @@
 <button onclick="openDay10()">🍹 День 10</button>
 <button onclick="openDay11()">🎁 День 11</button>
 <button onclick="openDay12()">✈️ День 12 — Домой</button>
-
+<h3 class="section-title">
+🍽️ Полезные разделы
+</h3>
 <hr>
 
 <button onclick="openRestaurants()">🍤 Рестораны</button>
@@ -79,12 +110,20 @@
 <button onclick="openInfo()">ℹ️ Полезная информация</button>
 
 <hr>
+<h3 class="section-title">
+✈️ Перед вылетом
+</h3>
 
 <button onclick="openChecklist()">📋 Чек-лист</button>
 
 <button onclick="openPacking()">🧳 Что взять с собой</button>
 
 <button onclick="openFlights()">✈️ Перелёт</button>
+<hr>
+
+<h3 class="section-title">
+⚙️ Сервис
+</h3>
 
 <button onclick="openAbout()">📦 О приложении</button>
 
@@ -107,9 +146,9 @@
 </button>
 
 <button class="nav-item"
-        onclick="openFavorites()">
-❤️
-<span>Избранное</span>
+        onclick="openDocuments()">
+📄
+<span>Документы</span>
 </button>
 
 <button class="nav-item"
