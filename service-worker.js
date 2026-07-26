@@ -1,7 +1,7 @@
 // ======================================
 // AI Travel v1.1
 // Service Worker
-// Автор: Сергей + ChatGPT
+// Автор: Сергей Коконов + ChatGPT
 // ======================================
 
 const CACHE_NAME = "ai-travel-v1.1";
@@ -15,10 +15,8 @@ const FILES_TO_CACHE = [
     "app.js",
     "manifest.json",
 
-    // Главная страница документов
     "documents.html",
 
-    // Дни путешествия
     "day1.html",
     "day2.html",
     "day3.html",
@@ -32,7 +30,6 @@ const FILES_TO_CACHE = [
     "day11.html",
     "day12.html",
 
-    // Разделы
     "restaurants.html",
     "massage.html",
     "exchange.html",
@@ -67,6 +64,7 @@ const FILES_TO_CACHE = [
 
     "assets/documents/passport-sergey.jpg",
     "assets/documents/passport-yana.jpg"
+
 ];
 
 // ======================================
@@ -80,14 +78,9 @@ self.addEventListener("install", event => {
         caches.open(CACHE_NAME)
             .then(cache => {
 
-                console.log("AI Travel: кэширование файлов...");
+                console.log("AI Travel cache install");
 
                 return cache.addAll(FILES_TO_CACHE);
-
-            })
-            .catch(error => {
-
-                console.error("Ошибка кэширования:", error);
 
             })
 
@@ -105,15 +98,13 @@ self.addEventListener("activate", event => {
 
     event.waitUntil(
 
-        caches.keys().then(keys =>
+        caches.keys().then(keys => {
 
-            Promise.all(
+            return Promise.all(
 
                 keys.map(key => {
 
                     if (key !== CACHE_NAME) {
-
-                        console.log("Удалён старый кэш:", key);
 
                         return caches.delete(key);
 
@@ -121,9 +112,9 @@ self.addEventListener("activate", event => {
 
                 })
 
-            )
+            );
 
-        )
+        })
 
     );
 
@@ -137,12 +128,53 @@ self.addEventListener("activate", event => {
 
 self.addEventListener("fetch", event => {
 
-    if (event.request.method !== "GET") return;
+    if (event.request.method !== "GET") {
+        return;
+    }
 
     event.respondWith(
 
         caches.match(event.request)
 
-            .then(cached => {
+            .then(response => {
 
-               
+                if (response) {
+                    return response;
+                }
+
+                return fetch(event.request)
+
+                    .then(networkResponse => {
+
+                        if (!networkResponse || networkResponse.status !== 200) {
+                            return networkResponse;
+                        }
+
+                        const copy = networkResponse.clone();
+
+                        caches.open(CACHE_NAME)
+                            .then(cache => {
+
+                                cache.put(event.request, copy);
+
+                            });
+
+                        return networkResponse;
+
+                    })
+
+                    .catch(() => {
+
+                        if (event.request.mode === "navigate") {
+
+                            return caches.match("index.html");
+
+                        }
+
+                    });
+
+            })
+
+    );
+
+});
