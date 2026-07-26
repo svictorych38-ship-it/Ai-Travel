@@ -844,12 +844,12 @@ target="_blank">
 
 
     <button
-        class="primary-button"
-        openPdf('assets/documents/hotel-voucher.pdf')
+    class="primary-button"
+    onclick="openPdf('assets/documents/hotel-voucher.pdf')">
 
-        📄 Открыть ваучер
+    📄 Открыть ваучер
 
-    </button>
+</button>
 
 </section>
 
@@ -1379,51 +1379,60 @@ target="_blank">
 </div>
 
 
-
 <script>
 
-const viewer=document.getElementById('viewer');
-const pdfViewer=document.getElementById('pdfViewer');
-const imageViewer=document.getElementById('imageViewer');
+const viewer = document.getElementById("viewer");
+const pdfViewer = document.getElementById("pdfViewer");
+const imageViewer = document.getElementById("imageViewer");
+
+// ======================================
+// PDF
+// ======================================
 
 function openPdf(file){
 
-    imageViewer.style.display='none';
-    pdfViewer.style.display='block';
-
-    pdfViewer.src=file;
-
-    viewer.classList.remove('hidden');
-
-    document.body.style.overflow='hidden';
+    window.open(file,"_blank");
 
 }
+
+// ======================================
+// Изображения
+// ======================================
 
 function openImage(file){
 
-    pdfViewer.style.display='none';
-    imageViewer.style.display='block';
+    pdfViewer.style.display = "none";
 
-    imageViewer.src=file;
+    imageViewer.style.display = "block";
 
-    viewer.classList.remove('hidden');
+    imageViewer.src = file;
 
-    document.body.style.overflow='hidden';
+    viewer.classList.remove("hidden");
+
+    document.body.style.overflow = "hidden";
 
 }
+
+// ======================================
 
 function closeViewer(){
 
-    viewer.classList.add('hidden');
+    viewer.classList.add("hidden");
 
-    pdfViewer.src='';
-    imageViewer.src='';
+    imageViewer.src = "";
 
-    document.body.style.overflow='';
+    imageViewer.style.display = "none";
+
+    pdfViewer.src = "";
+
+    pdfViewer.style.display = "none";
+
+    document.body.style.overflow = "";
 
 }
+// ======================================
 
-viewer.addEventListener('click',function(e){
+viewer.addEventListener("click",function(e){
 
     if(e.target===viewer){
 
@@ -1433,7 +1442,7 @@ viewer.addEventListener('click',function(e){
 
 });
 
-document.addEventListener('keydown',function(e){
+document.addEventListener("keydown",function(e){
 
     if(e.key==="Escape"){
 
@@ -1444,7 +1453,6 @@ document.addEventListener('keydown',function(e){
 });
 
 </script>
-
 </main>
 
 </body>
