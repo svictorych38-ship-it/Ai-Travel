@@ -1,18 +1,24 @@
 // ======================================
-// AI Travel v1.0
+// AI Travel v1.1
 // Service Worker
 // Автор: Сергей + ChatGPT
 // ======================================
 
-const CACHE_NAME = "ai-travel-v1";
+const CACHE_NAME = "ai-travel-v1.1";
 
 const FILES_TO_CACHE = [
+
     "./",
+
     "index.html",
     "style.css",
     "app.js",
     "manifest.json",
 
+    // Главная страница документов
+    "documents.html",
+
+    // Дни путешествия
     "day1.html",
     "day2.html",
     "day3.html",
@@ -26,6 +32,7 @@ const FILES_TO_CACHE = [
     "day11.html",
     "day12.html",
 
+    // Разделы
     "restaurants.html",
     "massage.html",
     "exchange.html",
@@ -42,19 +49,47 @@ const FILES_TO_CACHE = [
     "flights.html",
 
     "route.html",
-    "favorites.html",
-    "settings.html"
+    "settings.html",
+
+    // ===== Документы =====
+
+    "assets/documents/ticket-sergey-go.pdf",
+    "assets/documents/ticket-yana-go.pdf",
+    "assets/documents/ticket-sergey-back.pdf",
+    "assets/documents/ticket-yana-back.pdf",
+
+    "assets/documents/hotel-voucher.pdf",
+    "assets/documents/insurance.pdf",
+
+    "assets/documents/lounge-qr.jpg",
+    "assets/documents/lounge-qr-return.jpg",
+    "assets/documents/immigration-qr.jpg",
+
+    "assets/documents/passport-sergey.jpg",
+    "assets/documents/passport-yana.jpg"
 ];
 
-// ---------- Установка ----------
+// ======================================
+// INSTALL
+// ======================================
 
 self.addEventListener("install", event => {
 
     event.waitUntil(
 
         caches.open(CACHE_NAME)
+            .then(cache => {
 
-            .then(cache => cache.addAll(FILES_TO_CACHE))
+                console.log("AI Travel: кэширование файлов...");
+
+                return cache.addAll(FILES_TO_CACHE);
+
+            })
+            .catch(error => {
+
+                console.error("Ошибка кэширования:", error);
+
+            })
 
     );
 
@@ -62,7 +97,9 @@ self.addEventListener("install", event => {
 
 });
 
-// ---------- Активация ----------
+// ======================================
+// ACTIVATE
+// ======================================
 
 self.addEventListener("activate", event => {
 
@@ -75,6 +112,8 @@ self.addEventListener("activate", event => {
                 keys.map(key => {
 
                     if (key !== CACHE_NAME) {
+
+                        console.log("Удалён старый кэш:", key);
 
                         return caches.delete(key);
 
@@ -92,20 +131,18 @@ self.addEventListener("activate", event => {
 
 });
 
-// ---------- Работа офлайн ----------
+// ======================================
+// FETCH
+// ======================================
 
 self.addEventListener("fetch", event => {
+
+    if (event.request.method !== "GET") return;
 
     event.respondWith(
 
         caches.match(event.request)
 
-            .then(response => {
+            .then(cached => {
 
-                return response || fetch(event.request);
-
-            })
-
-    );
-
-});
+               
